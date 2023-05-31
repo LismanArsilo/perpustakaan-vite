@@ -9,10 +9,16 @@ const HeaderUser = () => {
           Perpustakaan <span className="text-white">Online</span>
         </Link>
       </div>
-      <div className="flex gap-10 text-lg">
-        <Link to="/">Home</Link>
-        <Link to="/profile">Profile</Link>
-        <Link to="/gallery">Gallery</Link>
+      <div className="flex gap-10 text-lg font-semibold">
+        <Link to="/" className="hover:bg-gray-100 px-2 py-1 rounded-xl">
+          Home
+        </Link>
+        <Link to="/profile" className="hover:bg-gray-100 px-2 py-1 rounded-xl">
+          Profile
+        </Link>
+        <Link to="/gallery" className="hover:bg-gray-100 px-2 py-1 rounded-xl">
+          Gallery
+        </Link>
       </div>
       <div className="flex me-3 gap-3">
         <Logout />
