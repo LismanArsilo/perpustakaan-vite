@@ -1,8 +1,10 @@
-const Home = () => {
+import HomeLayouts from "../components/Layouts/HomeLayouts";
+
+const HomePage = () => {
   return (
-    <div>
-      <h1>Halaman Home</h1>
-    </div>
+    <HomeLayouts>
+      <p>Body</p>
+    </HomeLayouts>
   );
 };
-export default Home;
+export default HomePage;
