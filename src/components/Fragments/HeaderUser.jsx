@@ -1,7 +1,17 @@
 import { Logout } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import Cookies from "cookie-universal";
+import authenticationApi from "../../api/authenticationApi";
 
 const HeaderUser = () => {
+  const cookies = new Cookies();
+  const handleLogOut = () => {
+    const token = cookies.get("Authorization");
+    authenticationApi.authLogout(token).then((response) => {
+      console.info(response);
+    });
+  };
+
   return (
     <nav className="h-12 border border-slate-700 flex justify-between items-center px-10 bg-blue-500 min-w-min gap-2">
       <div className="font-extrabold italic text-xl">
@@ -22,7 +32,9 @@ const HeaderUser = () => {
       </div>
       <div className="flex me-3 gap-3">
         <Logout />
-        <p className="text-sm">Logout</p>
+        <button className="text-sm" onClick={() => handleLogOut()}>
+          Logout
+        </button>
       </div>
     </nav>
   );
