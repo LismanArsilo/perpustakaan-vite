@@ -1,3 +1,4 @@
+import { useState } from "react";
 import HomeLayouts from "../components/Layouts/HomeLayouts";
 
 const HomePage = () => {

@@ -1,11 +1,17 @@
 import { VisibilityOff, Visibility } from "@mui/icons-material/";
-import { useState } from "react";
+import { CircularProgress } from "@mui/material";
+import { useContext, useState } from "react";
 import { useFormik } from "formik";
-import authenticationApi from "../../api/authenticationApi";
 import * as Yup from "yup";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../context/authContext/AuthContext";
+import { loginCall } from "../../api/authenticationApi";
 
 const FormLogin = () => {
   const [displayPassword, setDisplayPassword] = useState(true);
+  const { user, isLoading, status, dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const formik = useFormik({
     // Initial Values
@@ -28,9 +34,41 @@ const FormLogin = () => {
         email: values.email,
         password: values.password,
       };
-      authenticationApi.authLogin(data).then((response) => {
-        console.info(response);
-      });
+      loginCall(data, dispatch);
+      // if (status) {
+      //   const Toast = Swal.mixin({
+      //     toast: true,
+      //     position: "top",
+      //     showConfirmButton: false,
+      //     timer: 1500,
+      //     timerProgressBar: true,
+      //     didOpen: (toast) => {
+      //       toast.addEventListener("mouseenter", Swal.stopTimer);
+      //       toast.addEventListener("mouseleave", Swal.resumeTimer);
+      //     },
+      //   });
+      //   Toast.fire({
+      //     icon: "success",
+      //     title: "Signed in successfully",
+      //   });
+      //   // navigate("/");
+      // } else {
+      //   const Toast = Swal.mixin({
+      //     toast: true,
+      //     position: "top",
+      //     showConfirmButton: false,
+      //     timer: 2000,
+      //     timerProgressBar: true,
+      //     didOpen: (toast) => {
+      //       toast.addEventListener("mouseenter", Swal.stopTimer);
+      //       toast.addEventListener("mouseleave", Swal.resumeTimer);
+      //     },
+      //   });
+      //   Toast.fire({
+      //     icon: "error",
+      //     title: "Signed in failed",
+      //   });
+      // }
     },
   });
   const handleDisplayPassword = (prev) => {
@@ -112,7 +150,11 @@ const FormLogin = () => {
             className={`h-10 px-6 font-semibold rounded-md text-white bg-blue-500 w-full`}
             type="submit"
           >
-            Login
+            {isLoading ? (
+              <CircularProgress olor="inherit" size="20px" />
+            ) : (
+              "Login"
+            )}
           </button>
         </div>
       </form>

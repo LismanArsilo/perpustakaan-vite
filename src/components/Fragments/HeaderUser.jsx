@@ -1,15 +1,16 @@
 import { Logout } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import Cookies from "cookie-universal";
-import authenticationApi from "../../api/authenticationApi";
+// import authenticationApi from "../../api/authenticationApi";
 
 const HeaderUser = () => {
-  const cookies = new Cookies();
+  // const cookies = new Cookies();
   const handleLogOut = () => {
-    const token = cookies.get("Authorization");
-    authenticationApi.authLogout(token).then((response) => {
-      console.info(response);
-    });
+    // e.preventDefault();
+    // const token = cookies.get("Authorization");
+    // authenticationApi.authLogout(token).then((response) => {
+    //   console.info(response);
+    // });
   };
 
   return (
