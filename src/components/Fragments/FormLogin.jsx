@@ -35,23 +35,8 @@ const FormLogin = () => {
         password: values.password,
       };
       loginCall(data, dispatch);
-      // if (status) {
-      //   const Toast = Swal.mixin({
-      //     toast: true,
-      //     position: "top",
-      //     showConfirmButton: false,
-      //     timer: 1500,
-      //     timerProgressBar: true,
-      //     didOpen: (toast) => {
-      //       toast.addEventListener("mouseenter", Swal.stopTimer);
-      //       toast.addEventListener("mouseleave", Swal.resumeTimer);
-      //     },
-      //   });
-      //   Toast.fire({
-      //     icon: "success",
-      //     title: "Signed in successfully",
-      //   });
-      //   // navigate("/");
+
+      navigate("/");
       // } else {
       //   const Toast = Swal.mixin({
       //     toast: true,
@@ -151,7 +136,7 @@ const FormLogin = () => {
             type="submit"
           >
             {isLoading ? (
-              <CircularProgress olor="inherit" size="20px" />
+              <CircularProgress color="inherit" size="15px" />
             ) : (
               "Login"
             )}

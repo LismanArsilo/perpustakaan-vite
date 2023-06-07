@@ -42,7 +42,6 @@ const FormRegister = () => {
       console.log({ Values: values });
     },
   });
-  console.info(formik);
   const handleDisplayPassword = (prev) => {
     setDisplayPassword(!prev);
   };

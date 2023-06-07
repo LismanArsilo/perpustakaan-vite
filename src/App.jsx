@@ -9,12 +9,18 @@ import ErrorPage from "./pages/Error";
 import LoginPage from "./pages/Login";
 import RegisterPage from "./pages/Register";
 import DashboardPage from "./pages/Dashboard";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "./context/authContext/AuthContext";
 
 const App = () => {
   const { user } = useContext(AuthContext);
-  console.info({ app: user });
+  const [userLogin, setUserLogin] = useState({});
+  useEffect(() => {
+    const userLocal = JSON.parse(localStorage.getItem("User"));
+    if (userLocal) {
+      setUserLogin(userLocal);
+    }
+  }, []);
   return (
     <>
       <Router>

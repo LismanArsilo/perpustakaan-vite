@@ -1,14 +1,15 @@
+import BodyFragment from "../Fragments/BodyFragment";
 import FooterUser from "../Fragments/FooterUser";
-import HeaderUser from "../Fragments/HeaderUser";
+import HeroFragment from "../Fragments/HeroFragment";
+import Navigasi from "../Fragments/Navigasi";
 
 const HomeLayouts = (props) => {
   const { children } = props;
   return (
-    <div className="min-h-screen border border-slate-600">
-      <HeaderUser />
-      <div className="mt-5">
-        <p>ini Body</p>
-      </div>
+    <div className="min-h-screen min-w-full">
+      <Navigasi />
+      <HeroFragment />
+      <BodyFragment />
       <FooterUser />
     </div>
   );
